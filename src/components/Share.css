@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css?family=Khand:700|Khula:600,800|Changa:400");
+
+:root {
+  --black: 
+rgba(0, 0, 0, 1);
+  --denim-blue: 
+rgba(34, 48, 171, 1);
+  --abbey-2: 
+rgba(79, 79, 79, 0.502);
+  --abbey: 
+rgba(79, 79, 79, 1);
+  --blue-marguerite: 
+rgb(108, 96, 255);
+  --portage: 
+rgba(142, 134, 242, 1);
+  --well-read: 
+rgba(187, 50, 50, 1);
+  --french-gray: 
+rgba(188, 192, 202, 1);
+  --white: 
+rgba(255, 255, 255, 1);
+
+  --font-size-s: 14px;
+  --font-size-m: 16px;
+  --font-size-l: 32px;
+  --font-size-xl: 40px;
+  --font-size-xxl: 50px;
+  --font-size-l2: 64px;
+  --font-size-m2: 24px;
+
+  --font-family-changa: "Changa";
+  --font-family-jejugothic-regular: "JejuGothic-Regular";
+  --font-family-khand: "Khand";
+  --font-family-khula: "Khula";
+}
+
+
+
+.snap-page-container::-webkit-scrollbar { width: 0; background: transparent;}
+
+.snap-page-container{ 
+  scroll-behavior: smooth;
+  height: 100vh;
+  width: 100vw;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  text-align: center;
+}
+
+.snap-page-component{
+  scroll-snap-align: start;
+  text-align: center;
+  vertical-align: middle;
+  height: 100vh;
+  width: 100vw;
+}
+
+.snap-page-component:first-child{
+  background-image: 
+    url('https://anima-uploads.s3.amazonaws.com/projects/628097709ee82e3c152a2f25/releases/62809c28c25221139ed6a27e/img/ellipse25@1x.png');
+  background-repeat: no-repeat;
+  
+}
+
+.snap-page-align-center{
+  display: inline-block;
+  align-items: center;
+  width: 70vw;
+}

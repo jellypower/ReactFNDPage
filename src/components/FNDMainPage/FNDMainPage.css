@@ -1,0 +1,57 @@
+
+
+
+.main-page-container{
+    background-image: 
+    url('https://anima-uploads.s3.amazonaws.com/projects/628097709ee82e3c152a2f25/releases/62809c28c25221139ed6a27e/img/ellipse25@1x.png');
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.main-page-content{
+  min-width: 400px;
+  width: 50vw;
+  height: 100vh;
+  
+}
+
+.desc-box{
+  margin-left: 15vw;
+  margin-top: 25vh;
+  display: inline-block;
+  width: 40vw;
+  text-align: left;
+}
+
+.title{
+  color: #38393c;
+  font-family: var(--font-family-khand);
+  font-size: var(--font-size-l2);
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-align: left;
+}
+
+.sub-title{
+  color: var(--french-gray);
+  font-family: var(--font-family-khula);
+  font-size: var(--font-size-m2);
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-align: left;
+}
+
+.sample-img{
+  min-width: 50vw;
+  min-height: 50vh;
+  margin-top: 25vh;
+  margin-left: 5vw;
+  box-shadow: 3px 3px 8vw 8vh #BBB;
+}
+
+.btn-font {   
+  font: var(--font-family-khand);
+}

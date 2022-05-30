@@ -1,0 +1,17 @@
+.request-page-container{
+    display: flex;
+}
+
+.request-page-content{
+    width: 50vw;
+    margin-top: 20vh;
+    display: inline-block;
+}
+
+.form-label-font{
+    color: var(--abbey);
+    font-family: var(--font-family-khand);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    font-style: normal;
+}

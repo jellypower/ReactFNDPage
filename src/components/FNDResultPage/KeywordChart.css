@@ -1,0 +1,13 @@
+
+
+
+.keywrods-banner{
+    letter-spacing: 0; 
+    text-align: center;
+    
+    color: var(--abbey);
+    font-family: var(--font-family-khand);
+    font-size: var(--font-size-l);
+
+    margin-bottom: 30px;
+  }

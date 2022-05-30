@@ -1,0 +1,64 @@
+
+
+/*use*/
+.banner {
+  color: var(--french-gray);
+  font-family: var(--font-family-khula);
+  font-size: var(--font-size-l);
+  font-weight: 800;
+  text-align: center;
+}
+
+.truth-guage-content{
+  margin-top: 20vh;
+  
+}
+
+/*use*/
+.truth-guage-box{
+  margin-top: 100px;
+}
+
+.truth-prog-bar{
+  background-color: #6c60ff;
+}
+
+/*use*/
+.truth-guage-box-banner {
+  letter-spacing: 0; 
+  text-align: center;
+  color: var(--abbey);
+  font-family: var(--font-family-khand);
+  font-size: var(--font-size-l);
+}
+
+.percentage-label{
+  font-weight: 800;
+  font-size: var(--font-size-l);
+  color: var(--french-gray);
+  font-family: var(--font-family-khula);
+  letter-spacing: 6.25px;
+  text-align: center;
+}
+
+.truth-guage-bar{
+  position: relative;
+}
+
+.keyword-content{
+  margin-top: 15vh;
+}
+
+
+
+.article-body{
+  text-align: left;
+  color: #686868;
+  font-family: var(--font-family-changa);
+  font-size: var(--font-size-m);
+  font-weight: 400;
+}
+
+
+
+/*---------------------------------------------------------------------------------------------------------------------*/
