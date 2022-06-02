@@ -6,6 +6,7 @@ import FNDResultPage from './components/FNDResultPage/FNDResultPage';
 import { FNDMainPage } from './components/FNDMainPage/FNDMainPage';
 import {FNDRequestPage} from './components/FNDRequestPage/FNDRequestPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { FNDLoadingPage } from './components/FNDLoadingPage/FNDLoadingPage';
 
 
 
@@ -18,8 +19,10 @@ function App() {
         <Routes>
           <Route exact path="/" element={<FNDMainPage/>}></Route>
           <Route exact path="/request" element={<FNDRequestPage/>}></Route>
+          <Route path="/loading/:id" element={<FNDLoadingPage/>}>  </Route>
           <Route path="/result/:id" element={<FNDResultPage/>}></Route>
           <Route path="/*" element={<FNDNotFoundPage/>}>  </Route>
+        
         
         </Routes>
 

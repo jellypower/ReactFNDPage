@@ -48,10 +48,11 @@ export function FNDRequestPage(props) {
 
 function requestInference(event, nav){
 
+
     const title = event.target.title.value;
     const body = event.target.body.value;
 
-    fetch("http://localhost:8080/api/v1/fakenews-analyze/", {
+    fetch("http://3.38.210.214:8080/api/v1/fakenews-analyze/", {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify(
@@ -71,7 +72,7 @@ function requestInference(event, nav){
 
     })
     .then(response=>{
-        nav("/result/"+response)
+        nav("/loading/"+response);
     })
     .catch((response)=>{
         alert('[request page]request failed!');

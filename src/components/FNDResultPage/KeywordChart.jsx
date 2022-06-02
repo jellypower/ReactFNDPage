@@ -31,7 +31,7 @@ export function KeywordChart(props) {
           fontFamily: "Khand"
       }}/>
       <Tooltip />
-      <Bar dataKey="attention" fill="#6c60ff" maxBarSize={barSize}/>
+      <Bar dataKey="weight" fill="#6c60ff" maxBarSize={barSize}/>
     </BarChart>
     </ResponsiveContainer>
         </div>

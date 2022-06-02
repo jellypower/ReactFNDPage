@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./FNDResultPage.css";
 import "../Share.css"
@@ -8,43 +8,29 @@ import { KeywordChart } from "./KeywordChart";
 
 import { Button } from "react-bootstrap";
 
-
-//--------------------------temp
-const con ="12일 중국 국가신문출판서에 따르면 중국 국내 개발사가 신청한 게임에 45개 대해 4월 8일자로 판호를 발급했다. 여기에는 릴리스 게임즈\
-바이두, 4399 등 개발사가 포함됐으나, 텐센트, 넷이즈 등 대형 개발사는 목록에서 빠졌다."
-const da = [
-  {
-      word: '#한국',
-      attention: 2400
-  },
-  {
-      word: '#힙합',
-      attention: 1398
-  },
-  {
-      word: '#망해라',
-      attention: 9800
-  },
-  {
-      word: 'Word E',
-      attention: 3908
-  },
-  {
-      word: 'Word E',
-      attention: 4800
-  },
-];
-//--------------------------temp
-
 function FNDResultPage(props) {
+
 
   const id= useParams()['id'];
 
-  let [guage, setGuage] = useState(); 
-  let [keywords, setKeywords] = useState();
 
-  fetchInferenceResult(id, setGuage, setKeywords);
+  let [guage, setGuage] = useState(100); 
+  let [keywords, setKeywords] = useState({});
+  let [title, setTitle] = useState();
+  let [body, setBody] = useState();
   
+
+
+  useEffect(()=>{
+  fetchInferenceResult(id).
+  then((response) =>{
+    let [fakenews, result] = response;
+    setTitle(fakenews.title);
+    setBody(fakenews.body);
+    setGuage(result.Score);
+    setKeywords(result.Keywords);
+  })}, []);
+
 
 
   return (
@@ -53,14 +39,14 @@ function FNDResultPage(props) {
       <div className="snap-page-component">
         <div className="truth-guage-content snap-page-align-center">
           <div className="banner">What is your news?</div>
-          <TruthGuageBox guage={80} />
+          <TruthGuageBox guage={guage} />
         </div>
       </div>
 
       <div  className="snap-page-component">
         <div className="keyword-content snap-page-align-center">
-          <KeywordChart data={da} />
-          <Article contents={con} />
+          <KeywordChart data={keywords} />
+          <Article title={title} body={body}/>
         </div>
       </div>
 
@@ -89,45 +75,57 @@ function TruthGuageBox(props) {
 }
 
 function Article(props) {
-  const contents = props.contents
+  const title = props.title;
+  const body = props.body
 
   return (
+  
+  <>
+    <h2>{title}</h2>
     <ul>
-      <li className="article-body">{contents}</li>
+      <li className="article-body">{body}</li>
     </ul>
+    </>
   );
 }
 
-function fetchInferenceResult(id, setGuage, setKeywords){
-  console.log("http://localhost:8080/api/v1/fakenews-analyze/"+id);
-
-  fetch("http://localhost:8080/api/v1/fakenews-analyze/"+id, {
-        method: 'GET',
-        headers: { 'Content-type': 'application/json' },
-        
-    })
-    .then(response =>{
-        if(!response.ok){
-            alert('[result page]request not accepted!');
-            console.log(response);
-            return;
-        }
-
-        return response.json();
-
-    })
-    .then(response=>{
-        console.log(response);
-    })
-    .catch((response)=>{
-        alert('[result page]request failed!');
-        console.log(response);
-    })
-    
+function timer(time){
+  return new Promise(function(resolve){
+    setTimeout(function(){  }, time);
+  })
 }
 
+async function fetchInferenceResult(id) {
+
+  try {
+      var response = await fetch("http://3.38.210.214:8080/api/v1/fakenews-analyze/" + id);
+
+      if (!response.ok) {
+        alert('[result page]request not accepted!');
+        console.log(response);
+        return;
+      }
+      else {
+        response = await response.json();
+      }
+    }
+    catch (error) {
+      alert('[result page]request failed!');
+      console.log(response);
+    }
+
+    if(response.status === 3){
+      let fakeNews = response.fakeNews;
+      response = await JSON.parse(response.result); 
+      console.log(response);
+
+      return [fakeNews,response];
+    }
+    else{
+      alert('[result page]request failed!');
+      return;
+    }
 
 
-
-
+}
 export default FNDResultPage;
