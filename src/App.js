@@ -15,7 +15,7 @@ function App() {
 
       
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route exact path="/" element={<FNDMainPage/>}></Route>
           <Route exact path="/request" element={<FNDRequestPage/>}></Route>
