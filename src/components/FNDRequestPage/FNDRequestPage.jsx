@@ -52,7 +52,7 @@ function requestInference(event, nav){
     const title = event.target.title.value;
     const body = event.target.body.value;
 
-    fetch("http://3.38.210.214:8080/api/v1/fakenews-analyze/", {
+    fetch("https://api.fnc-1.link/api/v1/fakenews-analyze/", {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify(

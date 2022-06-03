@@ -18,6 +18,7 @@ function FNDResultPage(props) {
   let [keywords, setKeywords] = useState({});
   let [title, setTitle] = useState();
   let [body, setBody] = useState();
+  let [newsType, setNewsType] = useState(false);
   
 
 
@@ -27,6 +28,7 @@ function FNDResultPage(props) {
     let [fakenews, result] = response;
     setTitle(fakenews.title);
     setBody(fakenews.body);
+    setNewsType(result.TF);
     setGuage(result.Score);
     setKeywords(result.Keywords);
   })}, []);
@@ -39,7 +41,13 @@ function FNDResultPage(props) {
       <div className="snap-page-component">
         <div className="truth-guage-content snap-page-align-center">
           <div className="banner">What is your news?</div>
-          <TruthGuageBox guage={guage} />
+          <TruthGuageBox guage={guage} newsType={newsType}/>
+          <br/>
+
+          <h1 className="result-tag">this news is...
+          <div className={newsType ? "fake-result-label": "true-result-label"}>{newsType ? "Fake" : "True"}</div>
+          </h1>
+
         </div>
       </div>
 
@@ -55,11 +63,9 @@ function FNDResultPage(props) {
 }
 
 function TruthGuageBox(props) {
-  const guage = props.guage;
+  let guage = props.guage;
+  let newsType = props.newsType;
   let variant;
-
-  if (50 >= guage) variant = "warning";
-  else variant = "success";
 
   return (
     <div className="truth-guage-box">
@@ -67,7 +73,7 @@ function TruthGuageBox(props) {
       <p className="percentage-label">{guage}%</p>
 
       <div className="truth-guage-bar">
-        <ProgressBar variant="truth-prog-bar" now={guage} />
+        <ProgressBar variant={newsType ? "danger" : "success"} now={guage} />
       </div>
 
     </div>
@@ -98,7 +104,7 @@ function timer(time){
 async function fetchInferenceResult(id) {
 
   try {
-      var response = await fetch("http://3.38.210.214:8080/api/v1/fakenews-analyze/" + id);
+      var response = await fetch("https://api.fnc-1.link/api/v1/fakenews-analyze/" + id);
 
       if (!response.ok) {
         alert('[result page]request not accepted!');
